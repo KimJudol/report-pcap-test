@@ -38,7 +38,7 @@ void packet_info(const u_char* packet)
 		eth_hdr = (ethernet_header *)packet;
 
 		ip_hdr = (ip_header *)(packet + sizeof(ethernet_header));
-		uint8_t ip_size = ( ip_hdr->ver_ihl & 0x000000F ) * 4;
+		uint8_t ip_size = ( ip_hdr->ver_ihl & 0x0F ) * 4;
 
 		tcp_hdr = (tcp_header *)(packet + sizeof(ethernet_header) + ip_size);
 		uint8_t tcp_hdr_size = (tcp_hdr->data_offset_reserved >> 4) * 4;
